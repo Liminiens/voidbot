@@ -32,9 +32,8 @@ type MessageAction =
     | Skip
 
 let onUpdate (context: UpdateContext) =
-    match context.Update.Message with
-    | None -> ()
-    | Some message ->
+    context.Update.Message
+    |> Option.iter ^fun message ->
         let action =
             let checkIfGif() = 
                 message.Document
